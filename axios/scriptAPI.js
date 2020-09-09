@@ -5,3 +5,4 @@ axios.get('https://api.github.com/users/sh4kaa')
     .catch(function(error) {
         console.warn(error);
     });
+//método, utilizando axios
