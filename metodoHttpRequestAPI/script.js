@@ -24,3 +24,5 @@ minhaPromise().then(function(response) {
 }).catch(function(error) {
     console.warn(error);
 });
+
+// metódo httpRequest
