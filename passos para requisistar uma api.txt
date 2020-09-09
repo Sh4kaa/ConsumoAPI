@@ -1,0 +1,85 @@
+passos para consumir uma api
+1: criar uma variavel recebendo um função
+exemplo:
+
+var minhaPromise = function(){
+
+}
+
+2: retorno dessa função será a estanciação de da classe promise
+exemplo:
+ return new Promise();
+
+
+3: passar uma função como parametro dessa classe promise, essa função tem 2 paramentros, resolve e reject:
+exemplo:
+
+new Promise(function(resolve, reject){
+// aqui vai o corpo da requisição;
+});
+
+4: criar uma variavel para receber essa solicitação, recebendo uma instancia da classe XMLHttpRequest;
+exemplo:
+
+new Promise(function(resolve, reject){
+
+var xhr = new XMLHttpRequest();
+
+});
+4: chamar a requisição:
+exemplo: 
+xhr.open('GET',sitedaapi');
+
+passei o método get e em seguida passei o site da api
+
+5: agora passar um envio ao servidor
+exemplo:
+xhr.send(null);
+
+6: passar o comando para espera dessa requisição recebendo outra função
+exemplo:
+xhr.onreadystatechange = function(){
+
+}
+7: validação da requisição usando o if, isso dentro da função
+exemplo:
+xhr.onreadystatechange = function(){
+
+if(xhr.readystate === 4){
+ if(xhr.status === 200){
+   
+  }
+ }
+}
+8: depois de ter passado na validação colocar o retorno utilizando o resolve
+como ok e reject como sem sucesso
+exemplo:
+xhr.onreadystatechange = function(){
+
+if(xhr.readystate === 4){
+ if(xhr.status === 200){
+   resolve(JSON.parse(xhr.responseText)); // resposta caso dê ok, convertendo o JSON para texto
+  }else{
+    reject('erro na requisição');
+   }
+ }
+}
+9: chamar a variavel que foi criada no inicio do passo 1 onde a mesma recebe uma função(no caso a promise)
+recebendo o ".then()" com um função  como parametro recebendo a resposta de ok e o ".catch()" recebdo uma função como parametro tbem,
+mas com a mensagem de erro da requisição
+exemplo da estrutura:
+
+minhaPromise().then(function(response){}).catch(function(error){});
+
+10: corpo completo da requisição
+
+minhaPromise()
+    .then(function(response){
+     console.log(response);
+     })
+    .catch(function(error){
+     console.warn(error);
+     });
+
+
+
